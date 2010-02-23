@@ -16,8 +16,3 @@ To install for everyone:
 Once installed, to get help with basic usage and available options:
 
     htmlizer -h
-
-To get more extensive documentation (requires
-[shdoc](http://github.com/jmcantrell/shdoc)):
-
-    shdoc htmlizer [TOPIC]
