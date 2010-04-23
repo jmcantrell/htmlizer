@@ -3,7 +3,7 @@
 # Filename:      htmlizer.sh
 # Description:   Exports source code to html files.
 # Maintainer:    Jeremy Cantrell <jmcantrell@gmail.com>
-# Last Modified: Wed 2010-04-07 16:58:44 (-0400)
+# Last Modified: Thu 2010-04-22 22:08:16 (-0400)
 
 # I needed a way to convert a bunch of source code into HTML for use in my
 # website. Along with crontab, this gets me there.
@@ -38,7 +38,7 @@ directory=~/public_html/files
 file=~/code/project/script
 "
 
-profile_init || error_exit "Could not initialize profiles."
+profile_init || die "Could not initialize profiles."
 
 # COMMAND-LINE OPTIONS {{{1
 
@@ -59,8 +59,8 @@ while getopts ":hifvqC:P:NLDE" option; do
         v) verbose 1 ;;
         q) verbose 0 ;;
 
-        h) usage_exit 0 ;;
-        *) usage_exit 1 ;;
+        h) usage 0 ;;
+        *) usage 1 ;;
     esac
 done && shift $(($OPTIND - 1))
 
@@ -68,7 +68,7 @@ done && shift $(($OPTIND - 1))
 
 if [[ $PROFILE_ACTION ]]; then
     if ! profile_$PROFILE_ACTION; then
-        error_exit "Could not $PROFILE_ACTION profile(s)."
+        die "Could not $PROFILE_ACTION profile(s)."
     fi
     exit 0
 fi
