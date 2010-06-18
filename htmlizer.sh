@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Filename:      htmlizer.sh
 # Description:   Exports source code to html files.
 # Maintainer:    Jeremy Cantrell <jmcantrell@gmail.com>
-# Last Modified: Thu 2010-04-22 22:08:16 (-0400)
+# Last Modified: Thu 2010-06-17 23:21:20 (-0400)
 
 # I needed a way to convert a bunch of source code into HTML for use in my
 # website. Along with crontab, this gets me there.
