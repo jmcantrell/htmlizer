@@ -1,9 +1,16 @@
 HTMLizer will convert a bunch of source code to html. I use this to generate
 html pages for my website using cron.
 
+Installation
+------------
+
 You will need to install the
 [bashful library](http://github.com/jmcantrell/bashful)
 before you can use sourcery.
+
+To install, run the included install script:
+
+    ./install [DIR]
 
 To install for yourself only (~/bin will need to be in your PATH):
 
@@ -11,7 +18,7 @@ To install for yourself only (~/bin will need to be in your PATH):
 
 To install for everyone:
 
-    sudo ./install /usr/bin
+    sudo ./install /usr/local/bin
 
 Once installed, to get help with basic usage and available options:
 
