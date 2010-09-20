@@ -3,7 +3,7 @@
 # Filename:      htmlizer.sh
 # Description:   Exports source code to html files.
 # Maintainer:    Jeremy Cantrell <jmcantrell@gmail.com>
-# Last Modified: Thu 2010-06-17 23:21:20 (-0400)
+# Last Modified: Sun 2010-09-19 20:38:09 (-0400)
 
 # I needed a way to convert a bunch of source code into HTML for use in my
 # website. Along with crontab, this gets me there.
@@ -18,7 +18,7 @@ source bashful-profile
 
 SCRIPT_NAME=$(basename "$0" .sh)
 SCRIPT_USAGE="Converts source code files to HTML."
-SCRIPT_OPTS="
+SCRIPT_OPTIONS="
 -C DIRECTORY    Use DIRECTORY for configuration.
 
 -P PROFILE      Use PROFILE for action.
