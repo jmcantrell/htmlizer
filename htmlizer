@@ -3,13 +3,14 @@
 # Filename:      htmlizer
 # Description:   Exports source code to html files.
 # Maintainer:    Jeremy Cantrell <jmcantrell@gmail.com>
-# Last Modified: Sun 2010-10-03 02:59:45 (-0400)
+# Last Modified: Wed 2010-12-01 16:00:40 (-0500)
 
 # I needed a way to convert a bunch of source code into HTML for use in my
 # website. Along with crontab, this gets me there.
 
 # IMPORTS {{{1
 
+source bashful-execute
 source bashful-messages
 source bashful-modes
 source bashful-profile
@@ -36,6 +37,15 @@ verbose     ${VERBOSE:-0}
 PROFILE_DEFAULT="
 directory=~/public_html/files
 file=~/code/project/script
+# colorscheme=pablo
+# dark=1
+# filetype=python
+# folding=1
+# light=1
+# norc=1
+# numbered=1
+# tabstop=4
+# tidy=1
 "
 
 profile_init || die "Could not initialize profiles."
@@ -88,5 +98,18 @@ for PROFILE in $(profile_list "$PROFILE"); do
     html_file=$directory/${file##*/}.html
 
     info -c "$file => $html_file"
-    vim2html -vt "$file" "$html_file"
+
+    execute_push vim2html -v
+
+    [[ $light       ]] && execute_push -l
+    [[ $dark        ]] && execute_push -d
+    [[ $filetype    ]] && execute_push -t $filetype
+    [[ $folding     ]] && execute_push -f
+    [[ $colorscheme ]] && execute_push -c $colorscheme
+    [[ $norc        ]] && execute_push -x
+    [[ $numbered    ]] && execute_push -n
+    [[ $tabstop     ]] && execute_push -s $tabstop
+    [[ $tidy        ]] && execute_push -T
+
+    execute "$file" "$html_file"
 done
